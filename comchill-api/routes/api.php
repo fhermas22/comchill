@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\API\ConversationController;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,12 +22,18 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
 
-    // Future endpoints (Conversations, Messages, etc.) will go here
-    Route::get('/user', function (\Illuminate\Http\Request $request) {
+    Route::get('/user', function (Request $request) {
         return response()->json([
             'success' => true,
             'message' => 'User profile retrieved successfully',
             'data' => $request->user()
         ]);
     });
+
+    /*
+    |--------------------------------------------------------------------------
+    | Conversations Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::apiResource('conversations', ConversationController::class)->except(['update']);
 });
