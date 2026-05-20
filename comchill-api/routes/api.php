@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\ConversationController;
+use App\Http\Controllers\API\MessageController;
 use Illuminate\Http\Request;
 
 /*
@@ -36,4 +37,13 @@ Route::middleware('auth:sanctum')->group(function () {
     |--------------------------------------------------------------------------
     */
     Route::apiResource('conversations', ConversationController::class)->except(['update']);
+
+    /*
+    |--------------------------------------------------------------------------
+    | Messages Routes (Nested under conversations)
+    |--------------------------------------------------------------------------
+    */
+    Route::get('conversations/{conversation}/messages', [MessageController::class, 'index']);
+    Route::post('conversations/{conversation}/messages', [MessageController::class, 'store']);
+    Route::post('conversations/{conversation}/messages/read', [MessageController::class, 'markAsRead']);
 });
