@@ -1,3 +1,0 @@
-# ComChill Mobile & Web App
-
-...
