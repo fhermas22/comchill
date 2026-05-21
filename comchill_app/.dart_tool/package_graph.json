@@ -546,6 +546,7 @@
     {
       "name": "sqflite_common",
 <<<<<<< HEAD
+<<<<<<< HEAD
       "version": "2.5.8",
 =======
       "version": "2.5.7",
@@ -554,6 +555,9 @@
 =======
 >>>>>>> 4fbe0da (chore: delete comchill-app)
 >>>>>>> 6e52f36 (chore: delete comchill-app)
+=======
+      "version": "2.5.7",
+>>>>>>> 569b21f (chore: delete comchill-app)
       "dependencies": [
         "meta",
         "path",
@@ -604,6 +608,7 @@
     {
       "name": "bloc",
 <<<<<<< HEAD
+<<<<<<< HEAD
       "version": "9.2.1",
 =======
       "version": "9.2.0",
@@ -612,6 +617,9 @@
 =======
 >>>>>>> 4fbe0da (chore: delete comchill-app)
 >>>>>>> 6e52f36 (chore: delete comchill-app)
+=======
+      "version": "9.2.0",
+>>>>>>> 569b21f (chore: delete comchill-app)
       "dependencies": [
         "meta"
       ]
@@ -861,6 +869,7 @@
     {
       "name": "synchronized",
 <<<<<<< HEAD
+<<<<<<< HEAD
       "version": "3.4.0+1",
 =======
       "version": "3.4.0",
@@ -869,6 +878,9 @@
 =======
 >>>>>>> 4fbe0da (chore: delete comchill-app)
 >>>>>>> 6e52f36 (chore: delete comchill-app)
+=======
+      "version": "3.4.0",
+>>>>>>> 569b21f (chore: delete comchill-app)
       "dependencies": []
     },
     {

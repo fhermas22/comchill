@@ -16,6 +16,7 @@
     {
       "name": "bloc",
 <<<<<<< HEAD
+<<<<<<< HEAD
       "rootUri": "file:///home/fhermas22/.pub-cache/hosted/pub.dev/bloc-9.2.1",
 =======
       "rootUri": "file:///home/fhermas22/.pub-cache/hosted/pub.dev/bloc-9.2.0",
@@ -24,6 +25,9 @@
 =======
 >>>>>>> 4fbe0da (chore: delete comchill-app)
 >>>>>>> 6e52f36 (chore: delete comchill-app)
+=======
+      "rootUri": "file:///home/fhermas22/.pub-cache/hosted/pub.dev/bloc-9.2.0",
+>>>>>>> 569b21f (chore: delete comchill-app)
       "packageUri": "lib/",
       "languageVersion": "2.14"
     },
@@ -540,6 +544,7 @@
     {
       "name": "sqflite_common",
 <<<<<<< HEAD
+<<<<<<< HEAD
       "rootUri": "file:///home/fhermas22/.pub-cache/hosted/pub.dev/sqflite_common-2.5.8",
 =======
       "rootUri": "file:///home/fhermas22/.pub-cache/hosted/pub.dev/sqflite_common-2.5.7",
@@ -548,6 +553,9 @@
 =======
 >>>>>>> 4fbe0da (chore: delete comchill-app)
 >>>>>>> 6e52f36 (chore: delete comchill-app)
+=======
+      "rootUri": "file:///home/fhermas22/.pub-cache/hosted/pub.dev/sqflite_common-2.5.7",
+>>>>>>> 569b21f (chore: delete comchill-app)
       "packageUri": "lib/",
       "languageVersion": "3.10"
     },
@@ -584,6 +592,7 @@
     {
       "name": "synchronized",
 <<<<<<< HEAD
+<<<<<<< HEAD
       "rootUri": "file:///home/fhermas22/.pub-cache/hosted/pub.dev/synchronized-3.4.0+1",
       "packageUri": "lib/",
       "languageVersion": "3.11"
@@ -596,6 +605,11 @@
 =======
 >>>>>>> 4fbe0da (chore: delete comchill-app)
 >>>>>>> 6e52f36 (chore: delete comchill-app)
+=======
+      "rootUri": "file:///home/fhermas22/.pub-cache/hosted/pub.dev/synchronized-3.4.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.8"
+>>>>>>> 569b21f (chore: delete comchill-app)
     },
     {
       "name": "term_glyph",
