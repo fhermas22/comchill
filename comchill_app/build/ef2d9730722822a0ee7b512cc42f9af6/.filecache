@@ -2,8 +2,11 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 6c5da39 (chore: delete comchill-app)
+=======
+>>>>>>> 422122b (chore: delete comchill-app)
 {"version":2,"files":[{"path":"/home/fhermas22/__IMeN__/Projects/comchill/comchill_app/.dart_tool/package_config.json","hash":"cb20b9cfae30574b0a12587f26d5c808"},{"path":"/home/fhermas22/__IMeN__/Projects/comchill/comchill_app/build/ef2d9730722822a0ee7b512cc42f9af6/dart_build_result.json","hash":"2b2fc10f68762f3c4bc6cd11b22da6a0"},{"path":"/home/fhermas22/snap/flutter/common/flutter/packages/flutter_tools/lib/src/build_system/targets/native_assets.dart","hash":"276915f1b5ecce2bf8c85fb481b16ce4"},{"path":"/home/fhermas22/snap/flutter/common/flutter/bin/cache/dart-sdk/version","hash":"83d1103f00aa4232403c11fb28f57a87"},{"path":"/home/fhermas22/__IMeN__/Projects/comchill/comchill_app/pubspec.yaml","hash":"618ab21b69fa4a538907463c418ac32a"}]}
 =======
 {"version":2,"files":[{"path":"/home/fhermas22/__IMeN__/Projects/comchill/comchill_app/.dart_tool/package_config.json","hash":"dadaac991e16c0edda6e8ba7c8fe2b2d"},{"path":"/home/fhermas22/__IMeN__/Projects/comchill/comchill_app/build/ef2d9730722822a0ee7b512cc42f9af6/dart_build_result.json","hash":"b405c0c5814baaef571f11130d617cbb"},{"path":"/home/fhermas22/snap/flutter/common/flutter/packages/flutter_tools/lib/src/build_system/targets/native_assets.dart","hash":"276915f1b5ecce2bf8c85fb481b16ce4"},{"path":"/home/fhermas22/snap/flutter/common/flutter/bin/cache/dart-sdk/version","hash":"83d1103f00aa4232403c11fb28f57a87"},{"path":"/home/fhermas22/__IMeN__/Projects/comchill/comchill_app/pubspec.yaml","hash":"09a7de4745a8850d4169258e537bbdd0"}]}
@@ -48,4 +51,10 @@
 {"version":2,"files":[{"path":"/home/fhermas22/__IMeN__/Projects/comchill/comchill_app/.dart_tool/package_config.json","hash":"dadaac991e16c0edda6e8ba7c8fe2b2d"},{"path":"/home/fhermas22/__IMeN__/Projects/comchill/comchill_app/build/ef2d9730722822a0ee7b512cc42f9af6/dart_build_result.json","hash":"b405c0c5814baaef571f11130d617cbb"},{"path":"/home/fhermas22/snap/flutter/common/flutter/packages/flutter_tools/lib/src/build_system/targets/native_assets.dart","hash":"276915f1b5ecce2bf8c85fb481b16ce4"},{"path":"/home/fhermas22/snap/flutter/common/flutter/bin/cache/dart-sdk/version","hash":"83d1103f00aa4232403c11fb28f57a87"},{"path":"/home/fhermas22/__IMeN__/Projects/comchill/comchill_app/pubspec.yaml","hash":"09a7de4745a8850d4169258e537bbdd0"}]}
 >>>>>>> 569b21f (chore: delete comchill-app)
 >>>>>>> cefdc04 (chore: delete comchill-app)
+<<<<<<< HEAD
 >>>>>>> 6c5da39 (chore: delete comchill-app)
+=======
+=======
+{"version":2,"files":[{"path":"/home/fhermas22/__IMeN__/Projects/comchill/comchill_app/.dart_tool/package_config.json","hash":"dadaac991e16c0edda6e8ba7c8fe2b2d"},{"path":"/home/fhermas22/__IMeN__/Projects/comchill/comchill_app/build/ef2d9730722822a0ee7b512cc42f9af6/dart_build_result.json","hash":"b405c0c5814baaef571f11130d617cbb"},{"path":"/home/fhermas22/snap/flutter/common/flutter/packages/flutter_tools/lib/src/build_system/targets/native_assets.dart","hash":"276915f1b5ecce2bf8c85fb481b16ce4"},{"path":"/home/fhermas22/snap/flutter/common/flutter/bin/cache/dart-sdk/version","hash":"83d1103f00aa4232403c11fb28f57a87"},{"path":"/home/fhermas22/__IMeN__/Projects/comchill/comchill_app/pubspec.yaml","hash":"09a7de4745a8850d4169258e537bbdd0"}]}
+>>>>>>> 4fbe0da (chore: delete comchill-app)
+>>>>>>> 422122b (chore: delete comchill-app)
