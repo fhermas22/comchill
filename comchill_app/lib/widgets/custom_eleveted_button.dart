@@ -1,5 +1,6 @@
 import 'package:comchill_app/widgets/custom_circle_progress_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:comchill_app/utils/colors.dart';
 
 class CustomElevatedButton extends StatelessWidget {
   const CustomElevatedButton({
@@ -27,9 +28,9 @@ class CustomElevatedButton extends StatelessWidget {
         style: ElevatedButton.styleFrom(
           shadowColor: Colors.transparent,
           backgroundColor:
-              backgroudColor ?? Theme.of(context).colorScheme.primary,
+              backgroudColor ?? Theme.of(context).primaryColor,
           shape: RoundedRectangleBorder(
-            borderRadius: borderRadius ?? BorderRadius.circular(25),
+            borderRadius: borderRadius ?? BorderRadius.circular(15),
           ),
         ),
         onPressed: isLoading != null && isLoading == true ? null : onPressed,
@@ -40,7 +41,7 @@ class CustomElevatedButton extends StatelessWidget {
               label ?? "",
               style: textStyle ??
                   Theme.of(context).textTheme.displayMedium!.copyWith(
-                      fontWeight: FontWeight.bold, color: Colors.white),
+                      fontWeight: FontWeight.bold, color: Colors.white, fontSize: 16),
             ),
             (isLoading != null && isLoading == true)
                 ? const SizedBox(width: 10)
