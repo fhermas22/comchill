@@ -14,53 +14,54 @@ class CustomOutlinedButton extends StatelessWidget {
     this.borderColor,
   });
 
-  final Function()? onPressed;
+  final VoidCallback? onPressed;
   final String? label;
   final bool? isLoading;
   final BorderRadiusGeometry? borderRadius;
   final TextStyle? textStyle;
   final Color? backgroudColor;
-  final Icon? prefixIcon;
+  final Widget? prefixIcon;
   final Color? borderColor;
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
+    final buttonStyle = OutlinedButton.styleFrom(
+      side: BorderSide(
+        color: borderColor ?? Colors.black.withValues(alpha: 0.2),
+      ),
+      backgroundColor: backgroudColor ?? Colors.black.withValues(alpha: 0.05),
+      shape: RoundedRectangleBorder(
+        borderRadius: borderRadius ?? BorderRadius.circular(8),
+      ),
+    );
+
+    final Widget buttonContent = (isLoading == true)
+        ? const CustomCircleProgressIndicator()
+        : Text(
+            label ?? "",
+            style: textStyle ??
+                Theme.of(context).textTheme.displayMedium!.copyWith(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black, 
+                      fontSize: 16,
+                    ),
+          );
+
+    return Row(
       children: [
-        Row(
-          children: [
-            Expanded(
-              child: OutlinedButton.icon(
-                icon: prefixIcon,
-                style: OutlinedButton.styleFrom(
-                  side: BorderSide(color:borderColor?? Colors.black.withValues(alpha: 0.2)),
-                  backgroundColor:
-                      backgroudColor ?? Colors.black.withValues(alpha: 0.05),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: borderRadius ?? BorderRadius.circular(8),
-                  ),
-                ),
-                onPressed: onPressed,
-                label: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    (isLoading != null && isLoading == true)
-                        ? CustomCircleProgressIndicator()
-                        : Text(
-                            label ?? "",
-                            style: textStyle ??
-                                Theme.of(context)
-                                    .textTheme
-                                    .displayMedium!
-                                    .copyWith(
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.black),
-                          ),
-                  ],
-                ),
-              ),
+        Expanded(
+          child: prefixIcon != null && isLoading != true
+            ?OutlinedButton.icon(
+              onPressed: onPressed,
+              style: buttonStyle,
+              icon: prefixIcon!,
+              label: buttonContent,
+            )
+           :OutlinedButton(
+              onPressed: onPressed,
+                style: buttonStyle,
+                child: buttonContent,
             ),
-          ],
         ),
       ],
     );
