@@ -545,7 +545,7 @@
     },
     {
       "name": "sqflite_common",
-      "version": "2.5.7",
+      "version": "2.5.8",
       "dependencies": [
         "meta",
         "path",
@@ -595,7 +595,7 @@
     },
     {
       "name": "bloc",
-      "version": "9.2.0",
+      "version": "9.2.1",
       "dependencies": [
         "meta"
       ]
@@ -844,7 +844,7 @@
     },
     {
       "name": "synchronized",
-      "version": "3.4.0",
+      "version": "3.4.0+1",
       "dependencies": []
     },
     {
