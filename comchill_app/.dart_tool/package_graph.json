@@ -550,6 +550,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       "version": "2.5.8",
 =======
       "version": "2.5.7",
@@ -566,6 +567,8 @@
 >>>>>>> 6c5da39 (chore: delete comchill-app)
 =======
 >>>>>>> 422122b (chore: delete comchill-app)
+=======
+>>>>>>> d1458ef (chore: delete comchill-app)
       "version": "2.5.8",
 =======
       "version": "2.5.7",
@@ -602,7 +605,16 @@
 =======
       "version": "2.5.7",
 >>>>>>> 4fbe0da (chore: delete comchill-app)
+<<<<<<< HEAD
 >>>>>>> 422122b (chore: delete comchill-app)
+=======
+=======
+      "version": "2.5.8",
+=======
+      "version": "2.5.7",
+>>>>>>> 569b21f (chore: delete comchill-app)
+>>>>>>> b1e0b7e (chore: delete comchill-app)
+>>>>>>> d1458ef (chore: delete comchill-app)
       "dependencies": [
         "meta",
         "path",
@@ -657,6 +669,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       "version": "9.2.1",
 =======
       "version": "9.2.0",
@@ -673,6 +686,8 @@
 >>>>>>> 6c5da39 (chore: delete comchill-app)
 =======
 >>>>>>> 422122b (chore: delete comchill-app)
+=======
+>>>>>>> d1458ef (chore: delete comchill-app)
       "version": "9.2.1",
 =======
       "version": "9.2.0",
@@ -709,7 +724,16 @@
 =======
       "version": "9.2.0",
 >>>>>>> 4fbe0da (chore: delete comchill-app)
+<<<<<<< HEAD
 >>>>>>> 422122b (chore: delete comchill-app)
+=======
+=======
+      "version": "9.2.1",
+=======
+      "version": "9.2.0",
+>>>>>>> 569b21f (chore: delete comchill-app)
+>>>>>>> b1e0b7e (chore: delete comchill-app)
+>>>>>>> d1458ef (chore: delete comchill-app)
       "dependencies": [
         "meta"
       ]
@@ -963,6 +987,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       "version": "3.4.0+1",
 =======
       "version": "3.4.0",
@@ -979,6 +1004,8 @@
 >>>>>>> 6c5da39 (chore: delete comchill-app)
 =======
 >>>>>>> 422122b (chore: delete comchill-app)
+=======
+>>>>>>> d1458ef (chore: delete comchill-app)
       "version": "3.4.0+1",
 =======
       "version": "3.4.0",
@@ -1015,7 +1042,16 @@
 =======
       "version": "3.4.0",
 >>>>>>> 4fbe0da (chore: delete comchill-app)
+<<<<<<< HEAD
 >>>>>>> 422122b (chore: delete comchill-app)
+=======
+=======
+      "version": "3.4.0+1",
+=======
+      "version": "3.4.0",
+>>>>>>> 569b21f (chore: delete comchill-app)
+>>>>>>> b1e0b7e (chore: delete comchill-app)
+>>>>>>> d1458ef (chore: delete comchill-app)
       "dependencies": []
     },
     {
