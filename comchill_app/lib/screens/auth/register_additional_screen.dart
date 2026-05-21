@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:comchill_app/screens/home/home_screen.dart';
 import 'package:comchill_app/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -207,7 +208,9 @@ class _SetupProfileScreenState extends State<SetupProfileScreen> {
                   width: double.infinity,
                   height: 56,
                   child: ElevatedButton(
-                    onPressed: _isLoading ? null : _saveProfile,
+                    onPressed: _isLoading ? null : /*_saveProfile*/() {
+                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const HomeScreen()));
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: primaryColor,
                       foregroundColor: thirdColor,
