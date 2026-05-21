@@ -16,7 +16,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   // Initialisation de la liste avec vos classes externes
   final List<Widget> _screens = const [
-    //DiscussionsTabScreen(),
+    DiscussionTabScreen(),
     ContactsTabScreen(),
     IaTabScreen(),
   ];

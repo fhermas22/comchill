@@ -4,6 +4,7 @@ import 'package:comchill_app/widgets/custom_eleveted_button.dart';
 import 'package:comchill_app/widgets/custom_outlined_button.dart';
 import 'package:comchill_app/screens/auth/register_screen.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:comchill_app/screens/auth/login_with_password_screen.dart';
 
 
 
@@ -45,7 +46,9 @@ class _LoginScreenState extends State<LoginScreen> {
               CustomOutlinedButton(
                 label: "Se connecter avec Mot de passe",
                 prefixIcon: const FaIcon(FontAwesomeIcons.lock),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const LoginWithScreen()));
+                },
               ),
               const SizedBox(height: 10),
                Row(

@@ -1,3 +1,4 @@
+import 'package:comchill_app/screens/auth/login_screen.dart';
 import 'package:comchill_app/screens/auth/register_additional_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:comchill_app/utils/colors.dart';
@@ -195,7 +196,9 @@ class _RegisterWithScreenState extends State<RegisterWithScreen> {
                             style: TextStyle(color: secondaryTextColor, fontSize: 14),
                           ),
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const LoginScreen()));
+                            },
                             child: Text(
                               'Se connecter',
                               style: TextStyle(
