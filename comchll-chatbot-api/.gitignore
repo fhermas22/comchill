@@ -1,0 +1,13 @@
+# Clés et secrets
+.env
+.env.local
+
+# Environnement virtuel Python
+venv/
+.venv/
+env/
+
+# Caches de l'application
+__pycache__/
+*.pyc
+.pytest_cache/
