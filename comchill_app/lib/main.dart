@@ -1,4 +1,4 @@
-import 'package:comchill_app/cubits/login/login_cubit.dart';
+/*import 'package:comchill_app/cubits/login/login_cubit.dart';
 import 'package:comchill_app/repositories/api_repository/auth_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -17,7 +17,7 @@ void main() async {
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then((
     _,
   ) {
-    runApp(const SplashScreen());
+    runApp(const MyApp());
   });
 }
 
@@ -106,6 +106,28 @@ class _MainAppState extends State<MainApp> {
           routerConfig: router,
         ),
       ),
+    );
+  }
+}
+*/
+
+import 'package:flutter/material.dart';
+import 'package:comchill_app/screens/splash/splash_screen.dart'; // Ajustez l'import si nécessaire
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'ComChill',
+      // ✅ C'est ici que l'on définit l'écran de démarrage sécurisé
+      home: SplashScreen(), 
     );
   }
 }
