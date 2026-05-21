@@ -2,4 +2,8 @@
 {"file_system":[],"environment":[{"key":"HOME","hash":6994953644788074171},{"key":"PATH","hash":3659145231033735910}]}
 =======
 {"file_system":[],"environment":[{"key":"HOME","hash":6994953644788074171},{"key":"PATH","hash":4924097490771500649}]}
+<<<<<<< HEAD
 >>>>>>> 569b21f (chore: delete comchill-app)
+=======
+>>>>>>> 4fbe0da (chore: delete comchill-app)
+>>>>>>> 6e52f36 (chore: delete comchill-app)

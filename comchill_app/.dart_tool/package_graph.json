@@ -549,7 +549,11 @@
       "version": "2.5.8",
 =======
       "version": "2.5.7",
+<<<<<<< HEAD
 >>>>>>> 569b21f (chore: delete comchill-app)
+=======
+>>>>>>> 4fbe0da (chore: delete comchill-app)
+>>>>>>> 6e52f36 (chore: delete comchill-app)
       "dependencies": [
         "meta",
         "path",
@@ -603,7 +607,11 @@
       "version": "9.2.1",
 =======
       "version": "9.2.0",
+<<<<<<< HEAD
 >>>>>>> 569b21f (chore: delete comchill-app)
+=======
+>>>>>>> 4fbe0da (chore: delete comchill-app)
+>>>>>>> 6e52f36 (chore: delete comchill-app)
       "dependencies": [
         "meta"
       ]
@@ -856,7 +864,11 @@
       "version": "3.4.0+1",
 =======
       "version": "3.4.0",
+<<<<<<< HEAD
 >>>>>>> 569b21f (chore: delete comchill-app)
+=======
+>>>>>>> 4fbe0da (chore: delete comchill-app)
+>>>>>>> 6e52f36 (chore: delete comchill-app)
       "dependencies": []
     },
     {
