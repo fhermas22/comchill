@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 {"file_system":[],"environment":[{"key":"HOME","hash":6994953644788074171},{"key":"PATH","hash":3659145231033735910}]}
 =======
 {"file_system":[],"environment":[{"key":"HOME","hash":6994953644788074171},{"key":"PATH","hash":4924097490771500649}]}
@@ -11,3 +12,9 @@
 =======
 {"file_system":[],"environment":[{"key":"HOME","hash":6994953644788074171},{"key":"PATH","hash":4924097490771500649}]}
 >>>>>>> 569b21f (chore: delete comchill-app)
+=======
+{"file_system":[],"environment":[{"key":"HOME","hash":6994953644788074171},{"key":"PATH","hash":3659145231033735910}]}
+=======
+{"file_system":[],"environment":[{"key":"HOME","hash":6994953644788074171},{"key":"PATH","hash":4924097490771500649}]}
+>>>>>>> 4fbe0da (chore: delete comchill-app)
+>>>>>>> 7f782e7 (chore: delete comchill-app)
