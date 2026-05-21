@@ -126,7 +126,6 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'ComChill',
-      // ✅ C'est ici que l'on définit l'écran de démarrage sécurisé
       home: SplashScreen(), 
     );
   }

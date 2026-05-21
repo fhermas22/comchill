@@ -1,5 +1,7 @@
+import 'package:comchill_app/screens/auth/register_additional_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:comchill_app/utils/colors.dart';
+import 'package:comchill_app/screens/auth/register_additional_screen.dart';
 
 class RegisterWithScreen extends StatefulWidget {
   const RegisterWithScreen({super.key});
@@ -161,7 +163,9 @@ class _RegisterWithScreenState extends State<RegisterWithScreen> {
                         width: double.infinity,
                         height: 56,
                         child: ElevatedButton(
-                          onPressed: _submitForm,
+                          onPressed: /*_submitForm*/(){
+                              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const SetupProfileScreen()));
+                          },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: primaryColor,
                             foregroundColor: thirdColor,
