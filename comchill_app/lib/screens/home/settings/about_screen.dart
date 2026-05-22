@@ -19,7 +19,7 @@ class AboutScreen extends StatelessWidget {
                 children: [
                   IconButton(
                     icon: const Icon(Icons.arrow_back_ios_new, color: Colors.black87, size: 22),
-                    onPressed: () => Navigator.maybePop(context),
+                    onPressed: () => Navigator.pop(context),
                   ),
                   const SizedBox(width: 8),
                   const Text(

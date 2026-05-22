@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:comchill_app/utils/colors.dart';
 import 'package:comchill_app/screens/home/tabs/contacts_tab.dart';
-import 'package:comchill_app/screens/home/tabs/setting_screen.dart';
+import 'package:comchill_app/screens/home/settings/setting_screen.dart';
 
 class DiscussionTabScreen extends StatefulWidget {
   const DiscussionTabScreen({super.key});

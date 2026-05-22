@@ -31,14 +31,13 @@ class TeamScreen extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            // 1. EN-TÊTE PERSONNALISÉ (Sans AppBar)
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 12.0),
               child: Row(
                 children: [
                   IconButton(
                     icon: const Icon(Icons.arrow_back_ios_new, color: darkSurfaceColor, size: 22),
-                    onPressed: () => Navigator.maybePop(context),
+                    onPressed: () => Navigator.pop(context),
                   ),
                   const SizedBox(width: 8),
                   const Text(
