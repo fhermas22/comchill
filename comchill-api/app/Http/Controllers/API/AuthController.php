@@ -19,27 +19,22 @@ use Exception;
  */
 class AuthController extends Controller
 {
+    /**
+     * Register a new user with phone number and generate a Sanctum token.
+     */
     #[OA\Post(
-        path: "/api/login",
-        summary: "Authenticate user and generate Sanctum token",
+        path: "/api/register",
+        summary: "Register user and generate Sanctum token",
+        description: "Create a new user account using phone number and return an access token.",
         tags: ["Authentication"],
         responses: [
-            new OA\Response(
-                response: 200,
-                description: "User authenticated successfully"
-            ),
-            new OA\Response(
-                response: 401,
-                description: "Invalid credentials provided"
-            )
+            new OA\Response(response: 201, description: "User registered successfully"),
+            new OA\Response(response: 422, description: "Validation failed")
         ]
     )]
-
-    /**
-     * Handle incoming registration request via phone number.
-     */
     public function register(RegisterUserRequest $request): JsonResponse
     {
+
         $user = User::create([
             'full_name' => $request->full_name,
             'phone_number' => $request->phone_number,
@@ -61,7 +56,18 @@ class AuthController extends Controller
     /**
      * Handle incoming login request via phone number.
      */
+    #[OA\Post(
+        path: "/api/login",
+        summary: "Authenticate user and generate Sanctum token",
+        tags: ["Authentication"],
+        responses: [
+            new OA\Response(response: 200, description: "Login successful"),
+            new OA\Response(response: 401, description: "Invalid credentials"),
+            new OA\Response(response: 422, description: "Validation failed")
+        ]
+    )]
     public function login(LoginUserRequest $request): JsonResponse
+
     {
         $user = User::where('phone_number', $request->phone_number)->first();
 
@@ -95,14 +101,29 @@ class AuthController extends Controller
      * Authenticate or register a user securely via a social provider token.
      * * @author Hermas Francisco
      */
+    #[OA\Post(
+        path: "/api/auth/oauth",
+        summary: "Authenticate or register user via OAuth",
+        description: "Validates the provided social access token and returns a Sanctum token.",
+        tags: ["Authentication"],
+        responses: [
+            new OA\Response(response: 200, description: "OAuth authentication successful"),
+            new OA\Response(response: 401, description: "Invalid or expired provider credentials"),
+            new OA\Response(response: 422, description: "Validation failed")
+        ]
+    )]
     public function oauthLogin(OAuthLoginRequest $request): JsonResponse
     {
+
         $provider = $request->provider;
         $accessToken = $request->access_token;
 
         try {
             // Securely fetch user data from the provider using the configured client keys
             $socialUser = Socialite::driver($provider)->stateless()->userFromToken($accessToken);
+
+
+
         } catch (Exception $e) {
             return response()->json([
                 'success' => false,
@@ -164,7 +185,19 @@ class AuthController extends Controller
     /**
      * Handle user logout.
      */
+    #[OA\Post(
+        path: "/api/logout",
+        summary: "Logout the authenticated user",
+        description: "Deletes the current Sanctum access token.",
+        tags: ["Authentication"],
+        security: [["sanctum" => []]],
+        responses: [
+            new OA\Response(response: 200, description: "Logged out successfully"),
+            new OA\Response(response: 401, description: "Unauthenticated")
+        ]
+    )]
     public function logout(Request $request): JsonResponse
+
     {
         $request->user()->currentAccessToken()->delete();
 
