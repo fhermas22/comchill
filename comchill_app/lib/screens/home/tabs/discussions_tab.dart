@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:comchill_app/utils/colors.dart';
+import 'package:comchill_app/screens/home/tabs/contacts_tab.dart';
+import 'package:comchill_app/screens/home/tabs/setting_screen.dart';
 
 class DiscussionTabScreen extends StatefulWidget {
   const DiscussionTabScreen({super.key});
@@ -9,7 +12,7 @@ class DiscussionTabScreen extends StatefulWidget {
 
 class _DiscussionTabScreenState extends State<DiscussionTabScreen> with SingleTickerProviderStateMixin {
   late TabController _tabController;
-  final Color primaryOrange = const Color(0xFFE57C38);
+  
 
   final List<Map<String, dynamic>> _chats = [
     {
@@ -61,11 +64,10 @@ class _DiscussionTabScreenState extends State<DiscussionTabScreen> with SingleTi
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: backgroundColor,
       body: SafeArea(
         child: Column(
           children: [
-            // 1. EN-TÊTE SANS APPBAR
             Padding(
               padding: const EdgeInsets.only(left: 16.0, right: 16.0, top: 16.0, bottom: 8.0),
               child: Row(
@@ -73,10 +75,10 @@ class _DiscussionTabScreenState extends State<DiscussionTabScreen> with SingleTi
                   Container(
                     padding: const EdgeInsets.all(8),
                     decoration: BoxDecoration(
-                      color: primaryOrange,
+                      color: primaryColor,
                       borderRadius: BorderRadius.circular(14),
                     ),
-                    child: const Icon(Icons.chat_bubble_outline, color: Colors.white, size: 24),
+                    child: const Icon(Icons.chat_bubble_outline, color: thirdColor, size: 24),
                   ),
                   const SizedBox(width: 12),
                   const Text(
@@ -84,19 +86,21 @@ class _DiscussionTabScreenState extends State<DiscussionTabScreen> with SingleTi
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
-                      color: Colors.black,
+                      color: primaryTextColor,
                       letterSpacing: 0.5,
                     ),
                   ),
                   const Spacer(),
                   IconButton(
-                    icon: const Icon(Icons.groups_outlined, color: Colors.black87, size: 28),
-                    onPressed: () {},
+                    icon: const Icon(Icons.groups_outlined, color: primaryTextColor, size: 28),
+                    onPressed: () {
+                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>ContactsTabScreen()));
+                    },
                   ),
                   IconButton(
-                    icon: const Icon(Icons.settings_outlined, color: Colors.black87, size: 28),
+                    icon: const Icon(Icons.settings_outlined, color: primaryTextColor, size: 28),
                     onPressed: () {
-                      
+                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>SettingsScreen()));
                     },
                   ),
                 ],
@@ -109,10 +113,10 @@ class _DiscussionTabScreenState extends State<DiscussionTabScreen> with SingleTi
               child: TextField(
                 decoration: InputDecoration(
                   hintText: 'Rechercher des messages...',
-                  hintStyle: const TextStyle(color: Colors.grey, fontSize: 16),
-                  prefixIcon: const Icon(Icons.search, color: Colors.grey, size: 24),
+                  hintStyle: const TextStyle(color: secondaryTextColor, fontSize: 16),
+                  prefixIcon: const Icon(Icons.search, color: secondaryTextColor, size: 24),
                   filled: true,
-                  fillColor: const Color(0xFFF3F4F6),
+                  fillColor: secondaryTextColor.withValues(alpha: 0.3),
                   contentPadding: const EdgeInsets.symmetric(vertical: 12),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
@@ -126,17 +130,16 @@ class _DiscussionTabScreenState extends State<DiscussionTabScreen> with SingleTi
             TabBar(
               controller: _tabController,
               isScrollable: true,
-              labelColor: primaryOrange,
-              unselectedLabelColor: Colors.black54,
-              indicatorColor: primaryOrange,
+              labelColor: primaryColor,
+              unselectedLabelColor: primaryTextColor,
+              indicatorColor: primaryColor,
               indicatorWeight: 3,
               labelStyle: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
               unselectedLabelStyle: const TextStyle(fontWeight: FontWeight.normal, fontSize: 15),
               tabs: const [
                 Tab(text: "Discussions"),
-                Tab(text: "Communautés"),
+                Tab(text: "Archives"),
                 Tab(text: "Assistant IA"),
-                Tab(text: "Appels"),
               ],
             ),
 
@@ -148,7 +151,7 @@ class _DiscussionTabScreenState extends State<DiscussionTabScreen> with SingleTi
                   ListView.separated(
                     padding: const EdgeInsets.only(top: 8.0),
                     itemCount: _chats.length,
-                    separatorBuilder: (context, index) => const Divider(height: 1, indent: 82, color: Color(0xFFF0F0F0)),
+                    separatorBuilder: (context, index) => const Divider(height: 1, indent: 82, color: surfaceColor),
                     itemBuilder: (context, index) {
                       final chat = _chats[index];
                       return ListTile(
@@ -158,11 +161,11 @@ class _DiscussionTabScreenState extends State<DiscussionTabScreen> with SingleTi
                           children: [
                             CircleAvatar(
                               radius: 28,
-                              backgroundColor: const Color(0xFFC8CED6),
+                              backgroundColor: secondaryTextColor.withValues(alpha: 0.3),
                               child: Text(
                                 chat["initials"],
                                 style: const TextStyle(
-                                  color: Color(0xFF5A6575), 
+                                  color: secondaryTextColor, 
                                   fontWeight: FontWeight.bold,
                                   fontSize: 16,
                                 ),
@@ -175,9 +178,9 @@ class _DiscussionTabScreenState extends State<DiscussionTabScreen> with SingleTi
                                 width: 14,
                                 height: 14,
                                 decoration: BoxDecoration(
-                                  color: chat["online"] ? Colors.green : const Color(0xFFC8CED6),
+                                  color: chat["online"] ? successColor : secondaryTextColor,
                                   shape: BoxShape.circle,
-                                  border: Border.all(color: Colors.white, width: 2),
+                                  border: Border.all(color: thirdColor, width: 2),
                                 ),
                               ),
                             ),
@@ -193,7 +196,7 @@ class _DiscussionTabScreenState extends State<DiscussionTabScreen> with SingleTi
                             chat["message"],
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
-                            style: const TextStyle(color: Colors.grey, fontSize: 14),
+                            style: const TextStyle(color: secondaryTextColor, fontSize: 14),
                           ),
                         ),
                         trailing: Column(
@@ -202,19 +205,19 @@ class _DiscussionTabScreenState extends State<DiscussionTabScreen> with SingleTi
                           children: [
                             Text(
                               chat["time"],
-                              style: const TextStyle(color: Colors.grey, fontSize: 13),
+                              style: const TextStyle(color: secondaryTextColor, fontSize: 13),
                             ),
                             const SizedBox(height: 6),
                             if (chat["unread"] > 0)
                               Container(
                                 padding: const EdgeInsets.all(6),
                                 decoration: BoxDecoration(
-                                  color: primaryOrange,
+                                  color: primaryColor,
                                   shape: BoxShape.circle,
                                 ),
                                 child: Text(
                                   '${chat["unread"]}',
-                                  style: const TextStyle(color: Colors.white, fontSize: 11, fontWeight: FontWeight.bold),
+                                  style: const TextStyle(color: thirdColor, fontSize: 11, fontWeight: FontWeight.bold),
                                 ),
                               )
                             else
@@ -224,9 +227,8 @@ class _DiscussionTabScreenState extends State<DiscussionTabScreen> with SingleTi
                       );
                     },
                   ),
-                  const Center(child: Text("Espace Communautés")),
+                  const Center(child: Text("Vos Archives")),
                   const Center(child: Text("Assistant IA")),
-                  const Center(child: Text("Historique des Appels")),
                 ],
               ),
             ),

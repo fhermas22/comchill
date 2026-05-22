@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:comchill_app/utils/colors.dart';
 
 class BotMessage {
   final String text;
@@ -24,8 +25,6 @@ class _IaTabScreenState extends State<IaTabScreen> {
   final ScrollController _scrollController = ScrollController();
   bool _isTyping = false;
 
-  final Color primaryOrange = const Color(0xFFE57C38);
-  final Color botBubbleColor = const Color(0xFFE9EBEF);
 
   final List<BotMessage> _messages = [
     const BotMessage(
@@ -95,23 +94,22 @@ class _IaTabScreenState extends State<IaTabScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: backgroundColor,
       body: SafeArea(
         child: Column(
           children: [
-            // 1. EN-TÊTE DU BOT (Sans AppBar)
             Container(
               padding: const EdgeInsets.all(16.0),
               decoration: const BoxDecoration(
-                color: Colors.white,
-                border: Border(bottom: BorderSide(color: Color(0xFFF0F0F0))),
+                color: thirdColor,
+                border: Border(bottom: BorderSide(color: thirdColor)),
               ),
               child: Row(
                 children: [
                   CircleAvatar(
                     radius: 22,
-                    backgroundColor: primaryOrange.withValues(alpha: 0.1),
-                    child: Icon(Icons.smart_toy, color: primaryOrange, size: 24),
+                    backgroundColor: primaryColor.withValues(alpha: 0.1),
+                    child: Icon(Icons.smart_toy, color: primaryColor, size: 24),
                   ),
                   const SizedBox(width: 12),
                   const Column(
@@ -123,7 +121,7 @@ class _IaTabScreenState extends State<IaTabScreen> {
                       ),
                       Text(
                         "En ligne • Répond instantanément",
-                        style: TextStyle(fontSize: 12, color: Colors.green, fontWeight: FontWeight.w500),
+                        style: TextStyle(fontSize: 12, color: successColor, fontWeight: FontWeight.w500),
                       ),
                     ],
                   ),
@@ -152,7 +150,7 @@ class _IaTabScreenState extends State<IaTabScreen> {
                   alignment: Alignment.centerLeft,
                   child: Text(
                     "L'IA est en train d'écrire...",
-                    style: TextStyle(fontSize: 12, color: Colors.grey.shade500, ),
+                    style: TextStyle(fontSize: 12, color: secondaryTextColor, ),
                   ),
                 ),
               ),
@@ -170,9 +168,9 @@ class _IaTabScreenState extends State<IaTabScreen> {
                       padding: const EdgeInsets.only(right: 8.0),
                       child: ActionChip(
                         label: Text(_suggestions[index]),
-                        labelStyle: TextStyle(color: primaryOrange, fontWeight: FontWeight.w600, fontSize: 13),
-                        backgroundColor: primaryOrange.withValues(alpha: 0.08),
-                        side: BorderSide(color: primaryOrange.withValues(alpha: 0.2)),
+                        labelStyle: TextStyle(color: primaryColor, fontWeight: FontWeight.w600, fontSize: 13),
+                        backgroundColor: primaryColor.withValues(alpha: 0.08),
+                        side: BorderSide(color: primaryColor.withValues(alpha: 0.2)),
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
                         onPressed: () => _sendMessage(_suggestions[index]),
                       ),
@@ -189,7 +187,7 @@ class _IaTabScreenState extends State<IaTabScreen> {
                   Expanded(
                     child: Container(
                       decoration: BoxDecoration(
-                        color: const Color(0xFFF3F4F6),
+                        color: surfaceColor,
                         borderRadius: BorderRadius.circular(25),
                       ),
                       child: Row(
@@ -201,14 +199,14 @@ class _IaTabScreenState extends State<IaTabScreen> {
                               textCapitalization: TextCapitalization.sentences,
                               decoration: const InputDecoration(
                                 hintText: "Posez votre question à l'IA...",
-                                hintStyle: TextStyle(color: Colors.grey, fontSize: 15),
+                                hintStyle: TextStyle(color: secondaryTextColor, fontSize: 15),
                                 border: InputBorder.none,
                               ),
                               onSubmitted: (_) => _sendMessage(),
                             ),
                           ),
                           IconButton(
-                            icon: const Icon(Icons.mic_none, color: Colors.grey),
+                            icon: const Icon(Icons.mic_none, color: secondaryTextColor),
                             onPressed: () {},
                           ),
                         ],
@@ -220,8 +218,8 @@ class _IaTabScreenState extends State<IaTabScreen> {
                     onTap: () => _sendMessage(),
                     child: CircleAvatar(
                       radius: 22,
-                      backgroundColor: primaryOrange,
-                      child: const Icon(Icons.send, color: Colors.white, size: 20),
+                      backgroundColor: primaryColor,
+                      child: const Icon(Icons.send, color: thirdColor, size: 20),
                     ),
                   ),
                 ],
@@ -244,7 +242,7 @@ class _IaTabScreenState extends State<IaTabScreen> {
             padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
             constraints: BoxConstraints(maxWidth: MediaQuery.of(context).size.width * 0.78),
             decoration: BoxDecoration(
-              color: message.isMe ? primaryOrange : botBubbleColor,
+              color: message.isMe ? primaryColor : secondaryTextColor.withValues(alpha: 0.3),
               borderRadius: BorderRadius.only(
                 topLeft: const Radius.circular(18),
                 topRight: const Radius.circular(18),
@@ -255,7 +253,7 @@ class _IaTabScreenState extends State<IaTabScreen> {
             child: Text(
               message.text,
               style: TextStyle(
-                color: message.isMe ? Colors.white : const Color(0xFF2C3238),
+                color: message.isMe ? thirdColor : primaryTextColor.withValues(alpha: 0.4),
                 fontSize: 15,
                 height: 1.3,
               ),
@@ -265,7 +263,7 @@ class _IaTabScreenState extends State<IaTabScreen> {
             padding: const EdgeInsets.only(left: 4.0, right: 4.0, bottom: 6.0),
             child: Text(
               message.time,
-              style: const TextStyle(fontSize: 11, color: Colors.grey),
+              style: const TextStyle(fontSize: 11, color: secondaryTextColor),
             ),
           ),
         ],
