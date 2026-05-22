@@ -9,6 +9,7 @@ use App\Models\Conversation;
 use App\Services\ConversationService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use OpenApi\Attributes as OA;
 
 /**
  * @author Hermas Francisco
@@ -25,6 +26,17 @@ class ConversationController extends Controller
     /**
      * Display a listing of the user's conversations.
      */
+    #[OA\Get(
+        path: "/api/conversations",
+        summary: "List authenticated user's conversations",
+        description: "Returns the authenticated user's conversations.",
+        tags: ["Conversations"],
+        security: [["sanctum" => []]],
+        responses: [
+            new OA\Response(response: 200, description: "Conversations retrieved successfully"),
+            new OA\Response(response: 401, description: "Unauthenticated"),
+        ]
+    )]
     public function index(Request $request): JsonResponse
     {
         $conversations = $request->user()
@@ -44,6 +56,18 @@ class ConversationController extends Controller
     /**
      * Store or retrieve a private conversation.
      */
+    #[OA\Post(
+        path: "/api/conversations",
+        summary: "Create or retrieve a private conversation",
+        description: "Creates a new private conversation or returns the existing one.",
+        tags: ["Conversations"],
+        security: [["sanctum" => []]],
+        responses: [
+            new OA\Response(response: 201, description: "Conversation initialized successfully"),
+            new OA\Response(response: 401, description: "Unauthenticated"),
+            new OA\Response(response: 422, description: "Validation failed"),
+        ]
+    )]
     public function store(StoreConversationRequest $request): JsonResponse
     {
         $conversation = $this->conversationService->getOrCreatePrivateConversation(
@@ -65,6 +89,18 @@ class ConversationController extends Controller
     /**
      * Display the specified conversation details.
      */
+    #[OA\Get(
+        path: "/api/conversations/{conversation}",
+        summary: "Get conversation details",
+        description: "Returns details for a single conversation the authenticated user belongs to.",
+        tags: ["Conversations"],
+        security: [["sanctum" => []]],
+        responses: [
+            new OA\Response(response: 200, description: "Conversation details retrieved successfully"),
+            new OA\Response(response: 401, description: "Unauthenticated"),
+            new OA\Response(response: 403, description: "Unauthorized access to this conversation"),
+        ]
+    )]
     public function show(Conversation $conversation): JsonResponse
     {
         // Check if the authenticated user is part of this conversation
@@ -89,6 +125,18 @@ class ConversationController extends Controller
     /**
      * Remove the specified conversation from storage.
      */
+    #[OA\Delete(
+        path: "/api/conversations/{conversation}",
+        summary: "Delete conversation",
+        description: "Deletes a conversation if the authenticated user is part of it.",
+        tags: ["Conversations"],
+        security: [["sanctum" => []]],
+        responses: [
+            new OA\Response(response: 200, description: "Conversation deleted successfully"),
+            new OA\Response(response: 401, description: "Unauthenticated"),
+            new OA\Response(response: 403, description: "Unauthorized action"),
+        ]
+    )]
     public function destroy(Conversation $conversation): JsonResponse
     {
         if (!$conversation->users()->where('users.id', auth()->id())->exists()) {
@@ -107,3 +155,4 @@ class ConversationController extends Controller
         ]);
     }
 }
+
