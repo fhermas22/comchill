@@ -1,0 +1,1 @@
+ /home/fhermas22/__IMeN__/Projects/comchill/comchill_app/build/ef2d9730722822a0ee7b512cc42f9af6/dart_build_result.json:  /home/fhermas22/__IMeN__/Projects/comchill/comchill_app/.dart_tool/package_config.json /home/fhermas22/__IMeN__/Projects/comchill/comchill_app/pubspec.yaml /home/fhermas22/snap/flutter/common/flutter/bin/cache/dart-sdk/version

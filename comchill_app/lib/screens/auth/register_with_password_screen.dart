@@ -1,8 +1,5 @@
-import 'package:comchill_app/screens/auth/login_screen.dart';
-import 'package:comchill_app/screens/auth/register_additional_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:comchill_app/utils/colors.dart';
-import 'package:comchill_app/screens/auth/register_additional_screen.dart';
 
 class RegisterWithScreen extends StatefulWidget {
   const RegisterWithScreen({super.key});
@@ -164,9 +161,7 @@ class _RegisterWithScreenState extends State<RegisterWithScreen> {
                         width: double.infinity,
                         height: 56,
                         child: ElevatedButton(
-                          onPressed: /*_submitForm*/(){
-                              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const SetupProfileScreen()));
-                          },
+                          onPressed: _submitForm,
                           style: ElevatedButton.styleFrom(
                             backgroundColor: primaryColor,
                             foregroundColor: thirdColor,
@@ -196,9 +191,7 @@ class _RegisterWithScreenState extends State<RegisterWithScreen> {
                             style: TextStyle(color: secondaryTextColor, fontSize: 14),
                           ),
                           GestureDetector(
-                            onTap: () {
-                              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const LoginScreen()));
-                            },
+                            onTap: () {},
                             child: Text(
                               'Se connecter',
                               style: TextStyle(
