@@ -1,0 +1,465 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "ComChill Core API Documentation",
+        "description": "REST API endpoints for ComChill student messaging platform",
+        "contact": {
+            "email": "franciscohermas@gmail.com"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://127.0.0.1:8000",
+            "description": "ComChill Local Development API Server"
+        }
+    ],
+    "paths": {
+        "/api/ai/chat": {
+            "post": {
+                "tags": [
+                    "AI"
+                ],
+                "summary": "Chat with the AI assistant",
+                "description": "Processes a student message through the AI pipeline and returns the generated reply.",
+                "operationId": "1448d990436dff4229f6fee0b52a9263",
+                "responses": {
+                    "200": {
+                        "description": "AI response generated successfully"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "422": {
+                        "description": "Validation failed"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/register": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Register user and generate Sanctum token",
+                "description": "Create a new user account using phone number and return an access token.",
+                "operationId": "a718f172ff3ac464d723835815f8fb57",
+                "responses": {
+                    "201": {
+                        "description": "User registered successfully"
+                    },
+                    "422": {
+                        "description": "Validation failed"
+                    }
+                }
+            }
+        },
+        "/api/login": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Authenticate user and generate Sanctum token",
+                "description": "Handle incoming login request via phone number.",
+                "operationId": "44212a9096e4b09358281e9ec8a0701d",
+                "responses": {
+                    "200": {
+                        "description": "Login successful"
+                    },
+                    "401": {
+                        "description": "Invalid credentials"
+                    },
+                    "422": {
+                        "description": "Validation failed"
+                    }
+                }
+            }
+        },
+        "/api/auth/oauth": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Authenticate or register user via OAuth",
+                "description": "Validates the provided social access token and returns a Sanctum token.",
+                "operationId": "6dfdfaa263b6b5ee01726fc80b2c3029",
+                "responses": {
+                    "200": {
+                        "description": "OAuth authentication successful"
+                    },
+                    "401": {
+                        "description": "Invalid or expired provider credentials"
+                    },
+                    "422": {
+                        "description": "Validation failed"
+                    }
+                }
+            }
+        },
+        "/api/logout": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Logout the authenticated user",
+                "description": "Deletes the current Sanctum access token.",
+                "operationId": "79854151e609bd20032aa5aa4d5a35c0",
+                "responses": {
+                    "200": {
+                        "description": "Logged out successfully"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/conversations": {
+            "get": {
+                "tags": [
+                    "Conversations"
+                ],
+                "summary": "List authenticated user's conversations",
+                "description": "Returns the authenticated user's conversations.",
+                "operationId": "db7d90bb03149880a09ed34f1dca722f",
+                "responses": {
+                    "200": {
+                        "description": "Conversations retrieved successfully"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Conversations"
+                ],
+                "summary": "Create or retrieve a private conversation",
+                "description": "Creates a new private conversation or returns the existing one.",
+                "operationId": "9f5a2da8b475ff0b229915893494f8d2",
+                "responses": {
+                    "201": {
+                        "description": "Conversation initialized successfully"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "422": {
+                        "description": "Validation failed"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/conversations/{conversation}": {
+            "get": {
+                "tags": [
+                    "Conversations"
+                ],
+                "summary": "Get conversation details",
+                "description": "Returns details for a single conversation the authenticated user belongs to.",
+                "operationId": "b3b4798a8ae807530126a89111fd30ff",
+                "responses": {
+                    "200": {
+                        "description": "Conversation details retrieved successfully"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Unauthorized access to this conversation"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Conversations"
+                ],
+                "summary": "Delete conversation",
+                "description": "Deletes a conversation if the authenticated user is part of it.",
+                "operationId": "2fa32a2e96a87e427a558c6c26d64c66",
+                "responses": {
+                    "200": {
+                        "description": "Conversation deleted successfully"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Unauthorized action"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/upload/image": {
+            "post": {
+                "tags": [
+                    "Files"
+                ],
+                "summary": "Upload an image",
+                "description": "Uploads an image file and stores it using the configured storage service.",
+                "operationId": "e7e2caf56b54184fe677ea09cda6f8ad",
+                "responses": {
+                    "201": {
+                        "description": "Image uploaded successfully"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "422": {
+                        "description": "Validation failed"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/upload/document": {
+            "post": {
+                "tags": [
+                    "Files"
+                ],
+                "summary": "Upload a document",
+                "description": "Uploads a document file and stores it using the configured storage service.",
+                "operationId": "a655e7f88749a989f99e8c64f11d8e64",
+                "responses": {
+                    "201": {
+                        "description": "Document uploaded successfully"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "422": {
+                        "description": "Validation failed"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/conversations/{conversation}/messages": {
+            "get": {
+                "tags": [
+                    "Messages"
+                ],
+                "summary": "List messages in a conversation",
+                "description": "Returns a paginated list of messages for the specified conversation.",
+                "operationId": "de51fd4a42a2b4a6706e448fdfae28a1",
+                "responses": {
+                    "200": {
+                        "description": "Messages retrieved successfully"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Unauthorized access to this conversation"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Messages"
+                ],
+                "summary": "Send a new message",
+                "description": "Stores and sends a new message to the specified conversation.",
+                "operationId": "25902563de55122ee7288085a684b2ab",
+                "responses": {
+                    "201": {
+                        "description": "Message sent successfully"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Unauthorized access to this conversation"
+                    },
+                    "422": {
+                        "description": "Validation failed"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/conversations/{conversation}/messages/read": {
+            "post": {
+                "tags": [
+                    "Messages"
+                ],
+                "summary": "Mark conversation messages as read",
+                "description": "Marks all messages in the specified conversation as read.",
+                "operationId": "f28e2722df55cef6673a2ff190a80c4e",
+                "responses": {
+                    "200": {
+                        "description": "Messages marked as read"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Unauthorized action"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/user/profile": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Get authenticated user's profile",
+                "description": "Returns the current authenticated user's profile data.",
+                "operationId": "99a79f048f269116b4c02721d4e97f94",
+                "responses": {
+                    "200": {
+                        "description": "Profile retrieved successfully"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Update authenticated user's profile",
+                "description": "Updates the current authenticated user's profile using validated input.",
+                "operationId": "82069d62c8c808bf2f21f01fc778bec7",
+                "responses": {
+                    "200": {
+                        "description": "Profile updated successfully"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "422": {
+                        "description": "Validation failed"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/users/{user}": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Get a user's public profile",
+                "description": "Returns the public profile for a specific user.",
+                "operationId": "8ef94a31920758a2ea8c4a11c4a85c73",
+                "responses": {
+                    "200": {
+                        "description": "User public profile retrieved successfully"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "sanctum": {
+                "type": "http",
+                "description": "Enter your Sanctum token to access protected routes",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "AI",
+            "description": "AI"
+        },
+        {
+            "name": "Authentication",
+            "description": "Authentication"
+        },
+        {
+            "name": "Conversations",
+            "description": "Conversations"
+        },
+        {
+            "name": "Files",
+            "description": "Files"
+        },
+        {
+            "name": "Messages",
+            "description": "Messages"
+        },
+        {
+            "name": "Users",
+            "description": "Users"
+        }
+    ]
+}

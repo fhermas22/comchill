@@ -21,6 +21,7 @@ class MessageResource extends JsonResource
             'content' => $this->content,
             'message_type' => $this->message_type,
             'is_seen' => $this->is_seen,
+            'files' => FileResource::collection($this->whenLoaded('files')), // Embedded files list
             'created_at' => $this->created_at,
         ];
     }

@@ -1,22 +1,26 @@
 <?php
 
+use App\Http\Controllers\API\AIController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\ConversationController;
+use App\Http\Controllers\API\FileUploadController;
 use App\Http\Controllers\API\MessageController;
+use App\Http\Controllers\API\UserController;
 use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
-| Public Routes
+| Public Auth Routes
 |--------------------------------------------------------------------------
 */
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
+Route::post('/auth/oauth', [AuthController::class, 'oauthLogin']);
 
 /*
 |--------------------------------------------------------------------------
-| Protected Routes
+| Protected Core API Routes
 |--------------------------------------------------------------------------
 | These routes require a valid Sanctum token.
 */
@@ -30,6 +34,30 @@ Route::middleware('auth:sanctum')->group(function () {
             'data' => $request->user()
         ]);
     });
+
+    /*
+    |--------------------------------------------------------------------------
+    | AI Chatbot Endpoints
+    |--------------------------------------------------------------------------
+    */
+    Route::post('/ai/chat', [AIController::class, 'chat']);
+
+    /*
+    |--------------------------------------------------------------------------
+    | User & Profile Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::get('/user/profile', [UserController::class, 'profile']);
+    Route::put('/user/profile', [UserController::class, 'updateProfile']);
+    Route::get('/users/{user}', [UserController::class, 'show']); // To check other student profiles
+
+    /*
+    |--------------------------------------------------------------------------
+    | File Upload Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::post('/upload/image', [FileUploadController::class, 'uploadImage']);
+    Route::post('/upload/document', [FileUploadController::class, 'uploadDocument']);
 
     /*
     |--------------------------------------------------------------------------

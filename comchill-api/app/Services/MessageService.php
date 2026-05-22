@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\Message;
 use App\Models\Conversation;
 use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Support\Facades\DB;
 
 /**
  * @author Hermas Francisco
@@ -12,26 +13,44 @@ use Illuminate\Auth\Access\AuthorizationException;
 class MessageService
 {
     /**
-     * Send a text message within a specific conversation.
+     * Send a message (text or media) within a specific conversation.
      *
      * @throws AuthorizationException
      */
-    public function sendTextMessage(int $conversationId, int $senderId, string $content): Message
+    public function sendMessage(int $conversationId, int $senderId, ?string $content, array $files = []): Message
     {
         $conversation = Conversation::findOrFail($conversationId);
 
-        // Ensure the sender is actually a participant in this conversation
         if (!$conversation->users()->where('users.id', $senderId)->exists()) {
             throw new AuthorizationException('You are not a participant in this conversation.');
         }
 
-        return Message::create([
-            'conversation_id' => $conversationId,
-            'sender_id' => $senderId,
-            'content' => $content,
-            'message_type' => 'text',
-            'is_seen' => false,
-        ]);
+        return DB::transaction(function () use ($conversationId, $senderId, $content, $files) {
+            // Determine primary message type based on payload
+            $messageType = 'text';
+            if (empty($content) && !empty($files)) {
+                $messageType = $files[0]['file_type'];
+            }
+
+            $message = Message::create([
+                'conversation_id' => $conversationId,
+                'sender_id' => $senderId,
+                'content' => $content,
+                'message_type' => $messageType,
+                'is_seen' => false,
+            ]);
+
+            // Attach files to the created message if any
+            foreach ($files as $file) {
+                $message->files()->create([
+                    'file_path' => $file['file_path'],
+                    'file_type' => $file['file_type'],
+                    'file_size' => $file['file_size'],
+                ]);
+            }
+
+            return $message;
+        });
     }
 
     /**
