@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\AI\AIChatRequest;
 use App\Services\AIService;
 use Illuminate\Http\JsonResponse;
+use OpenApi\Attributes as OA;
+
 
 /**
  * @author Hermas Francisco
@@ -22,7 +24,20 @@ class AIController extends Controller
     /**
      * Route the student's message to the AI pipeline and deliver the processed response.
      */
+    #[OA\Post(
+        path: "/api/ai/chat",
+        summary: "Chat with the AI assistant",
+        description: "Processes a student message through the AI pipeline and returns the generated reply.",
+        tags: ["AI"],
+        security: [["sanctum" => []]],
+        responses: [
+            new OA\Response(response: 200, description: "AI response generated successfully"),
+            new OA\Response(response: 401, description: "Unauthenticated"),
+            new OA\Response(response: 422, description: "Validation failed"),
+        ]
+    )]
     public function chat(AIChatRequest $request): JsonResponse
+
     {
         $userId = $request->user()->id;
 
