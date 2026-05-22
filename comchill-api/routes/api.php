@@ -3,12 +3,13 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\ConversationController;
+use App\Http\Controllers\API\FileUploadController;
 use App\Http\Controllers\API\MessageController;
 use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
-| Public Routes
+| Public Auth Routes
 |--------------------------------------------------------------------------
 */
 Route::post('/register', [AuthController::class, 'register']);
@@ -16,7 +17,7 @@ Route::post('/login', [AuthController::class, 'login']);
 
 /*
 |--------------------------------------------------------------------------
-| Protected Routes
+| Protected Core API Routes
 |--------------------------------------------------------------------------
 | These routes require a valid Sanctum token.
 */
@@ -30,6 +31,14 @@ Route::middleware('auth:sanctum')->group(function () {
             'data' => $request->user()
         ]);
     });
+
+    /*
+    |--------------------------------------------------------------------------
+    | File Upload Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::post('/upload/image', [FileUploadController::class, 'uploadImage']);
+    Route::post('/upload/document', [FileUploadController::class, 'uploadDocument']);
 
     /*
     |--------------------------------------------------------------------------
