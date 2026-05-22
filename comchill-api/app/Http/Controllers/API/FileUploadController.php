@@ -7,8 +7,10 @@ use App\Http\Requests\File\UploadImageRequest;
 use App\Http\Requests\File\UploadDocumentRequest;
 use App\Services\FileStorageService;
 use Illuminate\Http\JsonResponse;
+use OpenApi\Attributes as OA;
 
 /**
+
  * @author Hermas Francisco
  */
 class FileUploadController extends Controller
@@ -23,7 +25,20 @@ class FileUploadController extends Controller
     /**
      * Upload and store an image.
      */
+    #[OA\Post(
+        path: "/api/upload/image",
+        summary: "Upload an image",
+        description: "Uploads an image file and stores it using the configured storage service.",
+        tags: ["Files"],
+        security: [["sanctum" => []]],
+        responses: [
+            new OA\Response(response: 201, description: "Image uploaded successfully"),
+            new OA\Response(response: 401, description: "Unauthenticated"),
+            new OA\Response(response: 422, description: "Validation failed"),
+        ]
+    )]
     public function uploadImage(UploadImageRequest $request): JsonResponse
+
     {
         $fileData = $this->fileStorageService->storeImage($request->file('image'));
 
@@ -37,7 +52,20 @@ class FileUploadController extends Controller
     /**
      * Upload and store a document.
      */
+    #[OA\Post(
+        path: "/api/upload/document",
+        summary: "Upload a document",
+        description: "Uploads a document file and stores it using the configured storage service.",
+        tags: ["Files"],
+        security: [["sanctum" => []]],
+        responses: [
+            new OA\Response(response: 201, description: "Document uploaded successfully"),
+            new OA\Response(response: 401, description: "Unauthenticated"),
+            new OA\Response(response: 422, description: "Validation failed"),
+        ]
+    )]
     public function uploadDocument(UploadDocumentRequest $request): JsonResponse
+
     {
         $fileData = $this->fileStorageService->storeDocument($request->file('document'));
 
