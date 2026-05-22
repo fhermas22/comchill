@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:comchill_app/screens/home/tabs/contacts_tab.dart';
 import 'package:comchill_app/screens/home/tabs/discussions_tab.dart';
 import 'package:comchill_app/screens/home/tabs/ia_tab.dart';
-import 'package:comchill_app/screens/home/tabs/archive_screen.dart';
+import 'package:comchill_app/screens/home/chats/archive_screen.dart';
 import 'package:comchill_app/utils/colors.dart';
 
 class HomeScreen extends StatefulWidget {
