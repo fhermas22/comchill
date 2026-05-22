@@ -11,6 +11,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Socialite\Socialite;
+use OpenApi\Attributes as OA;
 use Exception;
 
 /**
@@ -18,6 +19,22 @@ use Exception;
  */
 class AuthController extends Controller
 {
+    #[OA\Post(
+        path: "/api/login",
+        summary: "Authenticate user and generate Sanctum token",
+        tags: ["Authentication"],
+        responses: [
+            new OA\Response(
+                response: 200,
+                description: "User authenticated successfully"
+            ),
+            new OA\Response(
+                response: 401,
+                description: "Invalid credentials provided"
+            )
+        ]
+    )]
+
     /**
      * Handle incoming registration request via phone number.
      */
