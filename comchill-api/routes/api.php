@@ -5,6 +5,7 @@ use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\ConversationController;
 use App\Http\Controllers\API\FileUploadController;
 use App\Http\Controllers\API\MessageController;
+use App\Http\Controllers\API\UserController;
 use Illuminate\Http\Request;
 
 /*
@@ -32,6 +33,15 @@ Route::middleware('auth:sanctum')->group(function () {
             'data' => $request->user()
         ]);
     });
+
+    /*
+    |--------------------------------------------------------------------------
+    | User & Profile Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::get('/user/profile', [UserController::class, 'profile']);
+    Route::put('/user/profile', [UserController::class, 'updateProfile']);
+    Route::get('/users/{user}', [UserController::class, 'show']); // To check other student profiles
 
     /*
     |--------------------------------------------------------------------------
