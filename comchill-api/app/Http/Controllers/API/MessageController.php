@@ -38,6 +38,7 @@ class MessageController extends Controller
 
         // Paginate messages to optimize mobile performance (Offline-first / Cache friendly)
         $messages = $conversation->messages()
+            ->with('files') // Crucial for MessageResource to catch them
             ->latest()
             ->paginate(30);
 
@@ -54,11 +55,14 @@ class MessageController extends Controller
     public function store(StoreMessageRequest $request, Conversation $conversation): JsonResponse
     {
         try {
-            $message = $this->messageService->sendTextMessage(
+            $message = $this->messageService->sendMessage(
                 $conversation->id,
                 $request->user()->id,
-                $request->content
+                $request->content,
+                $request->input('files', [])
             );
+
+            $message->load('files'); // Ensure files relation is loaded before transformation
 
             return response()->json([
                 'success' => true,
