@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\AIController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\ConversationController;
@@ -33,6 +34,13 @@ Route::middleware('auth:sanctum')->group(function () {
             'data' => $request->user()
         ]);
     });
+
+    /*
+    |--------------------------------------------------------------------------
+    | AI Chatbot Endpoints
+    |--------------------------------------------------------------------------
+    */
+    Route::post('/ai/chat', [AIController::class, 'chat']);
 
     /*
     |--------------------------------------------------------------------------
