@@ -82,7 +82,7 @@ The ComChill platform adopts a pragmatic, mobile-first approach. **Authenticatio
 
 ```json
 {
-  "name": "Hermas Francisco",
+  "name": "Hermas Doey",
   "phone": "+22901000000",
   "password": "SecurePassword123",
   "password_confirmation": "SecurePassword123",
@@ -99,7 +99,7 @@ The ComChill platform adopts a pragmatic, mobile-first approach. **Authenticatio
   "token": "1|sanctum_generated_token_string",
   "user": {
     "id": 1,
-    "name": "Hermas Francisco",
+    "name": "Hermas Doey",
     "phone": "+22901000000",
     "email": null,
     "created_at": "2026-05-22T12:00:00.000000Z"
@@ -180,7 +180,7 @@ The ComChill platform adopts a pragmatic, mobile-first approach. **Authenticatio
   "message": "User profile retrieved successfully",
   "data": {
     "id": 1,
-    "name": "Hermas Francisco",
+    "name": "Hermas Doey",
     "phone": "+22901000000",
     "email": null
   }
